@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/thukys.png';
+	import favicon from '$lib/assets/thucydides.png';
 
 	import Header from '$lib/Header.svelte';
 
@@ -13,5 +13,7 @@
 
 <main class="m-0 min-h-screen bg-black font-ubuntu text-white">
 	<Header />
-	{@render children()}
+	<div class="p-4">
+		{@render children()}
+	</div>
 </main>

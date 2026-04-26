@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import 'tailwindcss';
 
+@font-face {
+	font-family: Stoix;
+	src: url('../lib/assets/stoix-font/Stoix.ttf');
+}
+
 @theme {
 	--font-ubuntu: 'Ubuntu', sans-serif;
 	--font-garamond: 'EB Garamond', serif;
+	--font-stoix: 'Stoix', 'EB Garamond', serif;
 
 	--color-charcoal-blue: #313e50;
 	--color-twilight-indigo: #3a435e;
