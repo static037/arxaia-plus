@@ -2,7 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/thucydides.png';
 
-	import Header from '$lib/Header.svelte';
+	import Header from './Header.svelte';
 
 	let { children } = $props();
 </script>
