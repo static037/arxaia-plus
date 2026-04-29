@@ -1,8 +1,8 @@
 <script lang="ts">
 	import thucydides from '$lib/assets/thucydides.png';
-	import xenofwn from '$lib/assets/xenofwn.png';
+	import xenophon from '$lib/assets/xenophon.png';
 
-	import Person from './Person.svelte';
+	import Person from '$lib/Person.svelte';
 </script>
 
 <header class="flex border-b border-charcoal-blue bg-charcoal-blue/50">
@@ -11,8 +11,8 @@
 		<a
 			href="/"
 			class="rounded-2xl px-4 py-2 text-center font-stoix text-2xl transition-colors hover:bg-white hover:text-black"
-			>ARXAIA+</a
+			>ΑΡΧΑΙΑ+</a
 		>
 	</div>
-	<Person src={xenofwn} alt="Ξενοφών">ΞΕΝΟΦΩΝ</Person>
+	<Person src={xenophon} alt="Ξενοφών">ΞΕΝΟΦΩΝ</Person>
 </header>

@@ -35,7 +35,7 @@
 </script>
 
 <p
-	class="inline-block self-end rounded-xl border border-charcoal-blue bg-charcoal-blue/30 p-1 backdrop-blur-xs transition-opacity {show
+	class="z-50 inline-block self-end rounded-xl border border-charcoal-blue bg-charcoal-blue/30 p-1 font-ubuntu backdrop-blur-xs transition-opacity {show
 		? 'opacity-100'
 		: 'cursor-default opacity-0'}"
 	bind:this={tooltip}
