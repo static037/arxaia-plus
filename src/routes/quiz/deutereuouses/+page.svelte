@@ -1,22 +1,32 @@
 <script lang="ts">
 	import Question from './Question.svelte';
 	import Highlight from '$lib/Highlight.svelte';
+
+	import { questions as q } from '$lib/questions';
+
+	let questions = $state(q);
+
+	let question = $derived(questions[0]);
+
+	let num = $state(1);
+
+	const ondone = () => {
+		questions = questions.slice(1);
+		num++;
+	};
 </script>
 
-<!-- ΔΕΙΓΜΑ -->
-<Question
-	num={1}
-	title="Να βρεθεί το είδος της δευτερεύουσας πρότασης"
-	answers={{
-		a: { text: 'Ειδική' },
-		b: { text: 'Πλάγια ερωτηματική' },
-		c: { text: 'Αναφορική' },
-		d: { text: 'Υποθετική', isCorrect: true }
-	}}
->
-	[16] Τοιούτων δὲ ὄντων Θηραμένης εἶπεν ἐν ἐκκλησίᾳ ὅτι <Highlight
-		>εἰ βούλονται αὐτὸν πέμψαι παρά Λύσανδρον</Highlight
-	>, εἰδὼς ἥξει Λακεδαιμονίους πότερον ἐξανδραποδίσασθαι τὴν πόλιν βουλόμενοι ἀντέχουσι περὶ τῶν
-	τειχῶν ἢ πίστεως ἕνεκα. Πεμφθεὶς δὲ διέτριβε παρὰ Λυσάνδρῳ τρεῖς μῆνας καὶ πλείω, ἐπιτηρῶν ὁπότε
-	Ἀθηναῖοι ἔμελλον διὰ τὸ ἐπιλελοιπέναι τὸν σῖτον ἅπαντα ὅ τι τις λέγοι ὁμολογήσειν.
-</Question>
+{#if questions.length > 0}
+	{#if question.difficulty === 'easy'}
+		{#key num}
+			<Question {question} {ondone} {num}>
+				{question.citation.pre}<Highlight>{question.citation.highlighted}</Highlight>{question
+					.citation.post}
+			</Question>
+		{/key}
+	{/if}
+{/if}
+
+<svelte:head>
+	<title>Ξενοφών | Αρχαία+</title>
+</svelte:head>

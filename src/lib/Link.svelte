@@ -23,7 +23,7 @@
 
 <a
 	href={show ? href : ''}
-	class="inline-block rounded-full border border-sky-700 bg-sky-600 px-3 py-1 font-ubuntu text-sky-100 opacity-0 transition-colors text-shadow-2xs text-shadow-sky-300 hover:bg-sky-900 {show
+	class="inline-block rounded-full border border-sky-700 bg-sky-600 px-3 py-1 text-center font-ubuntu text-sm text-sky-100 opacity-0 transition-colors text-shadow-2xs text-shadow-sky-300 hover:bg-sky-900 md:text-base {show
 		? 'cursor-pointer'
 		: 'cursor-default'}"
 	bind:this={quizButton}>{@render children()}</a

@@ -44,7 +44,7 @@
 	onmouseleave={() => (showTooltip = false)}
 ></h1>
 <Link show={showLink} href="quiz">Ξεκίνα το quiz</Link>
-<Tooltip x={pointer.x - 1175} y={pointer.y - 225} show={showTooltip}
+<Tooltip x={pointer.x} y={pointer.y - 50} show={showTooltip}
 	>Καλώς ήρθες, ξένε, πλησίον μας θα φιλοξενηθείς (Ομήρου Οδύσσεια)</Tooltip
 >
 

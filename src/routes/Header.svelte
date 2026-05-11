@@ -5,7 +5,9 @@
 	import Person from '$lib/Person.svelte';
 </script>
 
-<header class="flex border-b border-charcoal-blue bg-charcoal-blue/50">
+<header
+	class="relative z-50 flex border-b border-charcoal-blue bg-charcoal-blue/50 backdrop-blur-sm"
+>
 	<Person src={thucydides} alt="Θουκυδίδης">ΘΟΥΚΥΔΙΔΗΣ</Person>
 	<div class="flex flex-1 justify-center p-3">
 		<a

@@ -11,7 +11,11 @@
 	--font-garamond: 'EB Garamond', serif;
 	--font-stoix: 'Stoix', 'EB Garamond', serif;
 
-	--color-charcoal-blue: #313e50;
-	--color-wrong: #d5b9b2;
-	--color-correct: #8fbc94;
+	--color-charcoal-blue: rgb(49, 62, 80);
+	--color-wrong: rgb(213, 185, 178);
+	--color-correct: rgb(143, 188, 148);
+}
+
+body {
+	background-color: rgb(26, 31, 39);
 }
