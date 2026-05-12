@@ -23,12 +23,11 @@ interface Citation {
 }
 
 export interface Question {
-	difficulty: 'easy' | 'medium' | 'hard';
-	type: 'multiple-choice' | 'completion';
+	// type: 'multiple-choice' | 'completion';
 	prompt: string;
 	answers: Answers;
 	citation: Citation;
-	book: 'xenophon' | 'thucydides';
+	// book: 'xenophon' | 'thucydides';
 }
 
 // use extends

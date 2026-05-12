@@ -3,7 +3,7 @@
 
 	import { onMount, type Snippet } from 'svelte';
 
-	import type { Answer, Question } from '$lib/types';
+	import type { Question } from '$lib/types';
 
 	import Container from '$lib/Container.svelte';
 	import AnswerButton from './AnswerButton.svelte';
@@ -11,11 +11,12 @@
 	interface Props {
 		question: Question;
 		num: number;
-		ondone: () => void;
+		oncorrect: () => void;
+		onwrong: () => void;
 		children: Snippet<[]>;
 	}
 
-	let { question, num, ondone, children }: Props = $props();
+	let { question, num, oncorrect, onwrong, children }: Props = $props();
 
 	let elem = $state() as HTMLDivElement;
 
@@ -28,11 +29,13 @@
 		])
 	);
 
-	onMount(() => {
-		gsap.fromTo(
+	let block = $state(false);
+
+	export const fadeIn = (tl: gsap.core.Timeline) => {
+		tl.fromTo(
 			elem,
 			{
-				opacity: 0.25,
+				opacity: 0,
 				scale: 0.75
 			},
 			{
@@ -40,9 +43,31 @@
 				scale: 1
 			}
 		);
+	};
+
+	onMount(() => {
+		if (num > 1) {
+			gsap.fromTo(
+				elem,
+				{
+					opacity: 0,
+					scale: 0.75
+				},
+				{
+					opacity: 1,
+					scale: 1
+				}
+			);
+		}
 	});
 
-	const onclick = (answer: Answer) => {
+	const onclick = (isCorrect?: boolean) => {
+		block = true;
+
+		if (isCorrect === undefined) {
+			isCorrect = false;
+		}
+
 		gsap
 			.to(elem, {
 				y: -500,
@@ -50,13 +75,11 @@
 				ease: 'power2.in',
 				delay: 0.25
 			})
-			.then(() => {
-				ondone();
-			});
+			.then(isCorrect ? oncorrect : onwrong);
 	};
 </script>
 
-<Container bind:element={elem} className="z-0 relative">
+<Container bind:element={elem} className="z-0 relative {block ? 'pointer-events-none' : ''}">
 	<h1 class="text-center text-2xl">{num}. {question.prompt}</h1>
 	<p class="text-lg">
 		[{question.citation.source.chapter}.{question.citation.source.verse}] {@render children()}
@@ -66,24 +89,24 @@
 			<AnswerButton
 				answer={shuffledAnswers[0]}
 				letter="Α"
-				onclick={() => onclick(shuffledAnswers[0])}
+				onclick={() => onclick(shuffledAnswers[0].isCorrect)}
 			/>
 			<AnswerButton
 				answer={shuffledAnswers[1]}
 				letter="Β"
-				onclick={() => onclick(shuffledAnswers[0])}
+				onclick={() => onclick(shuffledAnswers[1].isCorrect)}
 			/>
 		</div>
 		<div class="flex gap-1">
 			<AnswerButton
 				answer={shuffledAnswers[2]}
 				letter="Γ"
-				onclick={() => onclick(shuffledAnswers[0])}
+				onclick={() => onclick(shuffledAnswers[2].isCorrect)}
 			/>
 			<AnswerButton
 				answer={shuffledAnswers[3]}
 				letter="Δ"
-				onclick={() => onclick(shuffledAnswers[0])}
+				onclick={() => onclick(shuffledAnswers[3].isCorrect)}
 			/>
 		</div>
 	</div>
